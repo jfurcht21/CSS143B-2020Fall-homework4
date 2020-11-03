@@ -7,16 +7,14 @@ import java.io.PrintStream;
 public class Problem3 {
     public static void printListInReverse(ListNode list, PrintStream print) {
         if(list != null && list.next != null){
-            list = list.next;
+            printListInReverse(list.next,print);
+            print.print(list.val + " ");
+            return;
         }
-        printListInReverse(list,print);
-        print.print(list);
+        if(list != null && list.next == null){
+            print.print(list.val + " ");
+            return;
+        }
     }
 
-    public static void printListHelper(ListNode list){
-        if(list != null && list.next != null){
-            list = list.next;
-        }
-        printListHelper(list);
-    }
 }

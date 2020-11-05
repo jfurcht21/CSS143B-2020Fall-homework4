@@ -14,7 +14,7 @@ public class BinarySearch {
         return -1;
     }
 
-    public static int binarySearchHelper(int[]data, int low, int high, int target){
+    private static int binarySearchHelper(int[]data, int low, int high, int target){
         if(high >= low && low < data.length) {
             int mid = low + (high - low) / 2;
 

@@ -71,17 +71,43 @@ public class SingleLinkedList {
 
     // reverse the linked list RECURSIVELY
     public void reverse() {
-        reverseHelper(head);
-    }
-
-    public ListNode reverseHelper(ListNode list){
-        if(list == null){
-            return null;
+        if(head.next != null) {
+            reverseHelper(head, null);
         }
-        if(list.next == null){
+    }
+    // can use 2 ptr's per class on Monday
+    public ListNode reverseHelper(ListNode ptr1, ListNode ptr2) {
+        if(ptr1.next == null){
+            head = ptr1;
+            ptr1.next = ptr2;
+            return head;
+        }
+        ListNode next1 = ptr1.next;
+
+        ptr1.next = ptr2;
+
+        reverseHelper(next1,ptr1);
+        return head;
+
+        /*if(head == null || head.next == null){
+            return head;
+        }
+
+        ListNode ptr = reverseHelper(head.next);
+        head.next.next = head;
+        head.next = null;
+        return ptr;*/
+
+        /*
+        if(list != null && list.next != null){
+            reverseHelper(list.next);
             return list;
         }
-        reverseHelper(list.next);
+        if(list != null && list.next == null){
+            return list;
+        }
+
         return list;
+        */
     }
 }

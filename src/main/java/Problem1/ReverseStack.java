@@ -13,7 +13,7 @@ public class ReverseStack {
         }
     }
 
-    public static void reverseStackHelper(Stack<Integer> stack, int x){
+    private static void reverseStackHelper(Stack<Integer> stack, int x){
         if(stack.size() == 0){
             stack.push(x);
             return;

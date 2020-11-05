@@ -21,13 +21,25 @@ public class SortList {
     public static ListNode findMidAndBreak(ListNode head) {
         int listSize = 0;
         ListNode ptr = head;
+        ListNode listTwo = head;
         while(ptr.next != null){
             listSize++;
             ptr = ptr.next;
         }
-
-
-        return null;
+        int mid = listSize / 2;
+        for(int i = 0; i < mid; i++){
+            listTwo = listTwo.next;
+        }
+/*
+        for(int i = 0; i <= mid; i++){
+            ptr2 = ptr2.next;
+            if(i == mid){
+               listTwo.next == ptr2.next;
+               ptr2.next == null;
+            }
+        }
+*/
+        return listTwo;
     }
 
     public static ListNode mergeLists(ListNode list1, ListNode list2) {

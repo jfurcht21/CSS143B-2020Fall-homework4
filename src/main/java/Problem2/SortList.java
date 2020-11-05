@@ -19,31 +19,46 @@ public class SortList {
     }
 
     public static ListNode findMidAndBreak(ListNode head) {
-        int listSize = 0;
+        if(head == null || head.next == null){
+            head = null;
+            return head;
+        }
+        int listSize = 1;
         ListNode ptr = head;
         ListNode listTwo = head;
         while(ptr.next != null){
             listSize++;
             ptr = ptr.next;
         }
+        ptr = head;
         int mid = listSize / 2;
         for(int i = 0; i < mid; i++){
             listTwo = listTwo.next;
-        }
-/*
-        for(int i = 0; i <= mid; i++){
-            ptr2 = ptr2.next;
-            if(i == mid){
-               listTwo.next == ptr2.next;
-               ptr2.next == null;
+            if(i == mid - 1){
+                ptr.next = null;
+            }
+            else{
+                ptr = ptr.next;
             }
         }
-*/
         return listTwo;
     }
 
     public static ListNode mergeLists(ListNode list1, ListNode list2) {
-        // homework
-        return null;
+        if(list1 == null){
+            return list2;
+        }
+        if(list2 == null){
+            return list1;
+        }
+
+        if(list1.val < list2.val){
+            list1.next = mergeLists(list1.next,list2);
+            return list1;
+        }
+        else{
+            list2.next = mergeLists(list1, list2.next);
+            return list2;
+        }
     }
 }

@@ -75,44 +75,19 @@ public class SingleLinkedList {
             return;
         }
         if(head.next.next != null) {
-            /*if(head.val == 0){
-                head = head.next;
-            }*/
-            reverseHelper(head, null);
+           ListNode node = reverseHelper(head.next);
+           node.next = null;
         }
     }
-    // can use 2 ptr's per class on Monday
-    public ListNode reverseHelper(ListNode ptr1, ListNode ptr2) {
+
+    public ListNode reverseHelper(ListNode ptr1) {
         if(ptr1.next == null){
-            head = ptr1;
-            ptr1.next = ptr2;
-            return head;
+            head.next = ptr1;
+            return ptr1;
         }
-        ListNode next1 = ptr1.next;
-        ptr1.next = ptr2;
-        reverseHelper(next1,ptr1);
+        ListNode ptr2 = reverseHelper(ptr1.next);
+        ptr2.next = ptr1;
 
-        return head;
-
-        /*if(head == null || head.next == null){
-            return head;
-        }
-
-        ListNode ptr = reverseHelper(head.next);
-        head.next.next = head;
-        head.next = null;
-        return ptr;*/
-
-        /*
-        if(list != null && list.next != null){
-            reverseHelper(list.next);
-            return list;
-        }
-        if(list != null && list.next == null){
-            return list;
-        }
-
-        return list;
-        */
+        return ptr1;
     }
 }

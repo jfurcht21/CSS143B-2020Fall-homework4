@@ -1,5 +1,7 @@
 package Problem2;
 
+import java.util.List;
+
 public class SingleLinkedList {
     private ListNode head;
     private int size;
@@ -69,6 +71,23 @@ public class SingleLinkedList {
 
     // reverse the linked list RECURSIVELY
     public void reverse() {
-        // homework
+        if(head.next == null){
+            return;
+        }
+        if(head.next.next != null) {
+           ListNode node = reverseHelper(head.next);
+           node.next = null;
+        }
+    }
+
+    public ListNode reverseHelper(ListNode ptr1) {
+        if(ptr1.next == null){
+            head.next = ptr1;
+            return ptr1;
+        }
+        ListNode ptr2 = reverseHelper(ptr1.next);
+        ptr2.next = ptr1;
+
+        return ptr1;
     }
 }
